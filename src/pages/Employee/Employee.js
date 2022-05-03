@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 
 const intialHeadCells = [
   {
-    id: "personalPicture",
+    id: "avatar",
     numeric: false,
     label: "avatar",
     type: "file",
@@ -22,9 +22,9 @@ const intialHeadCells = [
   },
 
   {
-    id: "jobTitle",
+    id: "gender",
     numeric: false,
-    label: "job title",
+    label: "gender",
   },
 ];
 

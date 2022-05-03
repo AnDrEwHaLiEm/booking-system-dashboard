@@ -18,7 +18,7 @@ const authorizedAPIs = axios.create({
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Content-Type": "application/json",
-    authorization: `123=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU0NjYzYTJhOWZmN2VlZjAxMTYxMWIiLCJlbWFpbCI6ImFuLnJvb29vZkBnbWFpbC5jb20iLCJpYXQiOjE2NTEzNDIyODF9.qQmfopkCzWSSHHbQh5QHTzwFITVbh6qpadYsc-UoRTw`,
+    authorization: `123=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjcxMzkxNTY4NmUwYzJkODkyOTFlOGYiLCJlbWFpbCI6ImRvbGFneWRvbGFneTExOTlAZ21haWwuY29tIiwiaWF0IjoxNjUxNTg3OTcwfQ.jmEsjTsGyAitwbEonc14IMqqhSv9XJgHug6WT5pBygs`,
   },
 });
 

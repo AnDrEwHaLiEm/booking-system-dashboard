@@ -113,7 +113,7 @@ export default function PersistentDrawerLeft(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Train System Dashboard
+            Booking System Dashboard
           </Typography>
         </Toolbar>
       </AppBar>

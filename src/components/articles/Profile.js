@@ -16,53 +16,42 @@ import {
 import { useState } from "react";
 
 function Profile({
-  personalPicture,
+  avatar,
   firstName,
   lastName,
   email,
-  phone_number,
-  nationalIdNumber,
-  authority,
+  phoneNumber,
+  nationalId,
   age,
-  jobTitle,
-  gender,
-  address
+  gender
 }) {
- 
+
 
   return (
     <Card style={{ margin: "auto", maxWidth: 400, "*": { padding: 0 } }}>
       <CardHeader
-       avatar={
-        <Avatar
-          src={personalPicture}
-          sx={{ width: 56, height: 56 }}
-          aria-label="recipe"
-        >
-          <img style={{ width: "inherit" }} src={avatarImage} />
-        </Avatar>
-      }
+        avatar={
+          <Avatar
+            src={avatar}
+            sx={{ width: 56, height: 56 }}
+            aria-label="recipe"
+          >
+            <img style={{ width: "inherit" }} src={avatarImage} />
+          </Avatar>
+        }
         title={firstName + " " + lastName}
         email={email}
       />
       <CardContent>
-        <Typography variant="body2">{"phone: " + phone_number}</Typography>
+        <Typography variant="body2">{"phone: " + phoneNumber}</Typography>
         <Divider sx={{ marginY: 2 }} />
-        <Typography variant="body2">{"nationalIdNumber: " + nationalIdNumber}</Typography>
+        <Typography variant="body2">{"email: " + email}</Typography>
         <Divider sx={{ marginY: 2 }} />
-        <Typography variant="body2">{"authority: " + authority}</Typography>
+        <Typography variant="body2">{"nationalIdNumber: " + nationalId}</Typography>
         <Divider sx={{ marginY: 2 }} />
         <Typography variant="body2">{"age: " + age}</Typography>
         <Divider sx={{ marginY: 2 }} />
         <Typography variant="body2">{"gender: " + gender}</Typography>
-        <Divider sx={{ marginY: 2 }} />
-        <Typography variant="body2">{"address: " + address}</Typography>
-        <Divider sx={{ marginY: 2 }} />
-        <Typography variant="body2">{"job Title: " + jobTitle}</Typography>
-       
-        
-     
-          
       </CardContent>
     </Card>
   );

@@ -5,7 +5,7 @@ import { showAlert } from "../../Redux/actions/viewAlert";
 import { useDispatch } from "react-redux";
 
 
-  
+
 
 const inputs = [
   {
@@ -30,33 +30,25 @@ const inputs = [
     type: "text",
   },
   {
-    id: "phone_number",
+    id: "phoneNumber",
     validation: Yup.string().min(11).required("phone is required"),
     initialValue: "",
     label: "phone",
     type: "text",
   },
   {
-    id: "nationalIdNumber",
-    validation: Yup.string().min(0).max(14).required("nationalIdNumber is required"),
+    id: "nationalId",
+    validation: Yup.string().min(14).max(14).required("national id is required"),
     initialValue: "",
-    label: "nationalIdNumber",
+    label: "national Id",
     type: "text",
   },
- 
   {
-    id: "personalPicture",
-    validation: Yup.mixed().required("personalPicture is required"),
+    id: "avatar",
+    validation: Yup.mixed().required("avatar is required"),
     initialValue: "",
-    label: "personal Picture",
+    label: "avatar",
     type: "file",
-  },
-  {
-    id: "authority",
-    validation: Yup.string().min(0).max(30).required("authority is required"),
-    initialValue: "",
-    label: "authority",
-    type: "text",
   },
   {
     id: "password",
@@ -66,21 +58,13 @@ const inputs = [
     type: "text",
   },
   {
-    id: "address",
-    validation: Yup.string().min(0).max(30).required("address is required"),
-    initialValue: "",
-    label: "address",
-    type: "text",
-  },
- 
-  {
     id: "gender",
     validation: Yup.string()
       .oneOf(["Male", "Female"])
       .required("gender is required"),
     options: [
       { value: "Male", label: "Male" },
-      { value: "Female", label: "Female" },
+      { value: "Female", label: "Female" }
     ],
     initialValue: "",
     label: "gender",
@@ -93,26 +77,16 @@ const inputs = [
     label: "age",
     type: "number",
     initialValue: '',
-  },
-  {
-    id: "jobTitle",
-    validation: Yup.string().min(4).max(30).required("job title is required"),
-    initialValue: "",
-    label: "job title",
-    type: "text",
-  },
- 
- 
- 
+  }
 ];
 
 export default function AddEmployee() {
   const dispatch = useDispatch();
-  const addEmployee = async (values , { resetForm }) => {
+  const addEmployee = async (values, { resetForm }) => {
     authorizedAPIs
       .post("/employee/new", values)
       .then((res) => {
-        console.log({res});
+        console.log({ res });
         dispatch(showAlert("this employee is add successfully", "success"));
         resetForm();
       })
