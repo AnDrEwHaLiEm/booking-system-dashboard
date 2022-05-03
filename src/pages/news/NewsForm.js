@@ -1,6 +1,6 @@
-import TrainForm from "../../components/TrainForm";
+import BookingForm from "../../components/BookingForm";
 import * as Yup from "yup";
-import {authorizedAPIs} from '../../API/axiosSetup'
+import { authorizedAPIs } from '../../API/axiosSetup'
 import { showAlert } from "../../Redux/actions/viewAlert";
 import { useDispatch } from "react-redux";
 
@@ -38,22 +38,22 @@ export default function NewsForm() {
 
   const dispatch = useDispatch();
 
- const handleSubmit = async (values , { resetForm }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     const { title, description, caption, image } = values;
     console.log(values);
-    await authorizedAPIs.post('/news/new' , {title, description, caption, image})
-    .then ((res) => {
-      console.log({res});
-      dispatch(showAlert("this news is add successfully", "success"));
-      resetForm();
-    })
-    .catch((err) => {
-     console.log(err.message);
+    await authorizedAPIs.post('/news/new', { title, description, caption, image })
+      .then((res) => {
+        console.log({ res });
+        dispatch(showAlert("this news is add successfully", "success"));
+        resetForm();
+      })
+      .catch((err) => {
+        console.log(err.message);
       });
   };
   return (
     <>
-      <TrainForm
+      <BookingForm
         inputsProps={inputs}
         title="Add News "
         submitLabel="create news"

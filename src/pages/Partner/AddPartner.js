@@ -1,4 +1,4 @@
-import BookingForm from '../../components/BookingForm'
+import BookingForm from "../../components/BookingForm";
 import * as Yup from "yup";
 import { authorizedAPIs } from "../../API/axiosSetup";
 import { showAlert } from "../../Redux/actions/viewAlert";
@@ -80,28 +80,38 @@ const inputs = [
   }
 ];
 
-export default function AddEmployee() {
+export default function AddPartner() {
+
+
   const dispatch = useDispatch();
-  const addEmployee = async (values, { resetForm }) => {
-    authorizedAPIs
-      .post("/employee/new", values)
+
+
+
+
+
+  const handleSubmit = async (values, { resetForm }) => {
+    const sendValue = { ...values, isaPartner: true };
+    console.log(sendValue);
+    await authorizedAPIs
+      .post('/user/new', sendValue)
       .then((res) => {
         console.log({ res });
-        dispatch(showAlert("this employee is add successfully", "success"));
+        dispatch(showAlert("this user is add successfully", "success"));
         resetForm();
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err.message);
       });
   };
   return (
     <>
       <BookingForm
-        handleSubmit={addEmployee}
         inputsProps={inputs}
-        title="Add employee "
-        submitLabel="Add"
-      />
+        title="Add user "
+        submitLabel="create"
+        handleSubmit={handleSubmit}
+      >
+      </BookingForm>
     </>
   );
 }

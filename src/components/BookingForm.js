@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TrainForm({
+export default function BookingForm({
   inputsProps,
   handleSubmit,
   title,
@@ -84,7 +84,7 @@ export default function TrainForm({
                 // resetForm()
               }}
             >
-               {children}
+              {children}
               <div
                 className={classes.inputsContainer}
                 style={{

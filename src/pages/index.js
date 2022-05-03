@@ -10,10 +10,10 @@ import NewsForm from "./news/NewsForm";
 import OneNews from "./news/OneNews";
 import EditNewsForm from "./news/EditNewsForm";
 import News from "./news/News";
-import TrainForm from "./Train/TrainForm";
-import OneTrain from "./Train/OneTrain";
-import EditTrainForm from "./Train/EditTrainForm";
-import Train from "./Train/Train";
+import AddPartner from "./Partner/AddPartner";
+import OnePartner from "./Partner/OnePartner";
+import EditPartner from "./Partner/EditPartner";
+import Partner from "./Partner/Partner";
 
 
 const PagesRoutes = () => {
@@ -28,17 +28,17 @@ const PagesRoutes = () => {
           <Route exact path="/news/:id" component={OneNews} />
           <Route exact path="/news/edit/:id" component={EditNewsForm} />
 
-          <Route exact path="/train" component={Train} />
-          <Route path="/train/new" component={TrainForm} />
-          <Route exact path="/train/:id" component={OneTrain} />
-          <Route exact path="/train/edit/:id" component={EditTrainForm} />
-     
+          <Route exact path="/user" component={Partner} />
+          <Route path="/user/new" component={AddPartner} />
+          <Route exact path="/user/:id" component={OnePartner} />
+          <Route exact path="/user/edit/:id" component={EditPartner} />
+
           <Route exact path="/employee" component={Employee} />
           <Route path="/employee/add-employee" component={AddEmployee} />
           <Route path="/employee/edit/:id" component={EditEmployee} />
           <Route exact path="/employee/:id" component={OneEmployee} />
 
-          
+
         </Switch>
       </PersistentDrawerRight>
     </StyledEngineProvider>

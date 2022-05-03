@@ -1,4 +1,4 @@
-import TrainForm from "../../components/TrainForm";
+import BookingForm from "../../components/BookingForm";
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -48,7 +48,7 @@ export default function EditNewsForm() {
     authorizedAPIs
       .get(`/news/showOne/${id}`)
       .then((res) => {
-    //  console.log({res});
+        //  console.log({res});
         setValues(res.data.selectedNews);
         inputs.forEach(
           (item) => (item.initialValue = res.data.selectedNews[item.id])
@@ -62,7 +62,7 @@ export default function EditNewsForm() {
       });
   }, [id]);
 
-  const handleUpdate = async (values , { resetForm }) => {
+  const handleUpdate = async (values, { resetForm }) => {
     const { title, description, caption, image } = values;
     console.log(values);
     await authorizedAPIs
@@ -84,15 +84,15 @@ export default function EditNewsForm() {
       });
   };
 
-  
 
-  return  (
-      <TrainForm
-        handleSubmit={handleUpdate}
-        inputsProps={inputsData}
-        title="Edit News "
-        submitLabel="Edit news"
-      />
-   
+
+  return (
+    <BookingForm
+      handleSubmit={handleUpdate}
+      inputsProps={inputsData}
+      title="Edit News "
+      submitLabel="Edit news"
+    />
+
   );
 }

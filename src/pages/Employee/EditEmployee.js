@@ -1,4 +1,4 @@
-import TrainForm from "../../components/TrainForm";
+import BookingForm from "../../components/BookingForm";
 import * as Yup from "yup";
 import { useParams } from "react-router";
 import React from 'react';
@@ -122,7 +122,7 @@ export default function EditEmployee() {
 
 
   return (
-    <TrainForm
+    <BookingForm
       handleSubmit={handleUpdate}
       inputsProps={inputsData}
       title="Edit employee "

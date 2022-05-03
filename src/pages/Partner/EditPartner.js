@@ -1,11 +1,11 @@
-import BookingForm from '../../components/BookingForm'
+import BookingForm from "../../components/BookingForm";
 import * as Yup from "yup";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+// import imageCover from "../../assets/news.jpg";
 import { authorizedAPIs } from "../../API/axiosSetup";
 import { showAlert } from "../../Redux/actions/viewAlert";
 import { useDispatch } from "react-redux";
-
-
-
 
 const inputs = [
   {
@@ -38,7 +38,7 @@ const inputs = [
   },
   {
     id: "nationalId",
-    validation: Yup.string().min(14).max(14).required("national id is required"),
+    validation: Yup.string().min(14).max(14).required("national Id is required"),
     initialValue: "",
     label: "national Id",
     type: "text",
@@ -70,38 +70,95 @@ const inputs = [
     label: "gender",
     type: "text",
   },
-
   {
     id: "age",
     validation: Yup.number().required("age is required"),
     label: "age",
     type: "number",
     initialValue: '',
+  },
+  {
+    id: "isaPartner",
+    validation: Yup.boolean(),
+    label: "is a partner",
+    type: "checkbox",
+    initialValue: "true",
   }
 ];
 
-export default function AddEmployee() {
+export default function EditPartner() {
+  const { id } = useParams();
+  const [values, setValues] = useState();
+  const [inputsData, setInputsData] = useState([...inputs]);
   const dispatch = useDispatch();
-  const addEmployee = async (values, { resetForm }) => {
+
+  useEffect(() => {
+    console.log({ id });
     authorizedAPIs
-      .post("/employee/new", values)
+      .get(`/user/showOne/${id}`)
       .then((res) => {
         console.log({ res });
-        dispatch(showAlert("this employee is add successfully", "success"));
-        resetForm();
+        setValues(res.data.result);
+        inputs.forEach(
+          (item) => (item.initialValue = res.data.result[item.id])
+        );
+        inputs.avatar.initialValue = "";
+        console.log(inputs)
+        setInputsData(inputs);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, [id]);
+
+  const handleUpdate = async (values, { resetForm }) => {
+    const {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      nationalId,
+      avatar,
+      password,
+      gender,
+      age,
+      isaPartner,
+    } = values;
+    console.log(values);
+    await authorizedAPIs
+      .put("/user/edit", {
+        _id: id,
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        nationalId,
+        avatar,
+        password,
+        gender,
+        age,
+        isaPartner,
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(showAlert("this user is updated successfully", "success"));
+        // resetForm();
+      })
+      .catch((err) => {
+        console.log(err.message);
       });
   };
-  return (
+
+  return values ? (
     <>
       <BookingForm
-        handleSubmit={addEmployee}
-        inputsProps={inputs}
-        title="Add employee "
-        submitLabel="Add"
+        handleSubmit={handleUpdate}
+        inputsProps={inputsData}
+        title="Edit Prtner "
+        submitLabel="Edit Partner"
       />
     </>
+  ) : (
+    <> NOT FOUND</>
   );
 }

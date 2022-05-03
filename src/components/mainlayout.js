@@ -16,16 +16,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { Link } from "react-router-dom";
-import StoreIcon from "@mui/icons-material/Store";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import HomeWorkIcon from "@mui/icons-material/HomeWork";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Button } from "@mui/material";
 import Cookies from "js-cookie";
 import { useHistory } from "react-router";
-import TrainIcon from '@mui/icons-material/Train';
 
 const drawerWidth = 240;
 
@@ -89,7 +86,7 @@ export default function PersistentDrawerLeft(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const history = useHistory();
-  
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -143,14 +140,14 @@ export default function PersistentDrawerLeft(props) {
         <List>
           <SideNaveLink to="/" text=" Home" IconComponent={HomeIcon} />
           <SideNaveLink to="/news" text="news" IconComponent={ReceiptIcon} />
-          <SideNaveLink to="/train" text="train" IconComponent={TrainIcon} />
-          
+          <SideNaveLink to="/user" text="partner" IconComponent={HomeWorkIcon} />
+
           <SideNaveLink
             to="/employee"
             text="employee"
             IconComponent={HomeWorkIcon}
           />
-         
+
           <ListItem
             button
             component={Button}
