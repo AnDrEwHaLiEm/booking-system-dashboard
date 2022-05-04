@@ -93,23 +93,23 @@ export default function EditPartner() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log({ id });
     authorizedAPIs
       .get(`/user/showOne/${id}`)
       .then((res) => {
         console.log({ res });
         setValues(res.data.result);
-        inputs.forEach(
-          (item) => (item.initialValue = res.data.result[item.id])
+        inputs.map(
+          (item) => {
+            (item.id == "avatar" ? item.initialValue = '' : item.initialValue = res.data.result[item.id])
+          }
         );
-        inputs.avatar.initialValue = "";
-        console.log(inputs)
-        setInputsData(inputs);
+        setInputsData([...inputs]);
+        console.log(inputsData);
       })
       .catch((err) => {
         console.log(err.message);
       });
-  }, [id]);
+  }, inputsData);
 
   const handleUpdate = async (values, { resetForm }) => {
     const {
@@ -142,10 +142,9 @@ export default function EditPartner() {
       .then((res) => {
         console.log(res);
         dispatch(showAlert("this user is updated successfully", "success"));
-        // resetForm();
       })
       .catch((err) => {
-        console.log(err.message);
+        dispatch(showAlert(err.message, "error"));
       });
   };
 

@@ -29,7 +29,7 @@ const intialHeadCells = [
 ];
 
 
-export default function Partner() {
+export default function User() {
 
   const [user, setuser] = useState([]);
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ export default function Partner() {
 
   useEffect(() => {
 
-    authorizedAPIs.get('/user/showMany/100/true')
+    authorizedAPIs.get('/user/showMany/100/false')
       .then((res) => {
         const userUnmergedNames = [...res.data.result];
         userUnmergedNames.forEach(
@@ -66,19 +66,14 @@ export default function Partner() {
   return (
     <>
       <Typography gutterBottom variant="h6" component="div" align="center">
-        Partner
+        user
       </Typography>
-      <Button variant="contained" component={Link} to="/partner/new">
-        add partner
-      </Button>
-
 
       <EnhancedTable
-        withEdit
         handleDeleteAPI={handleDelete}
         initialRows={user}
         headCells={intialHeadCells}
-        path={"/partner/"}
+        path={"/user/"}
       />
 
     </>

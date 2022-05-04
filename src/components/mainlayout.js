@@ -140,7 +140,8 @@ export default function PersistentDrawerLeft(props) {
         <List>
           <SideNaveLink to="/" text=" Home" IconComponent={HomeIcon} />
           <SideNaveLink to="/news" text="news" IconComponent={ReceiptIcon} />
-          <SideNaveLink to="/user" text="partner" IconComponent={HomeWorkIcon} />
+          <SideNaveLink to="/partner" text="partner" IconComponent={HomeWorkIcon} />
+          <SideNaveLink to="/user" text="user" IconComponent={HomeWorkIcon} />
 
           <SideNaveLink
             to="/employee"

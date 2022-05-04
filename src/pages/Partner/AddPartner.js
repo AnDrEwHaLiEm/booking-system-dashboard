@@ -107,7 +107,7 @@ export default function AddPartner() {
     <>
       <BookingForm
         inputsProps={inputs}
-        title="Add user "
+        title="Add Partner "
         submitLabel="create"
         handleSubmit={handleSubmit}
       >

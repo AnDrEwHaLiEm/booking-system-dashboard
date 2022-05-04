@@ -14,6 +14,8 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import Container from "@mui/material/Container";
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 // formik imports
 import { Formik } from "formik";
@@ -124,23 +126,44 @@ export default function BookingForm({
                         {touched[id] && errors[id]}
                       </FormHelperText>
                     </FormControl>
-                  ) : (
-                    <TextField
-                      error={Boolean(touched[id] && errors[id])}
-                      helperText={touched[id] && errors[id]}
-                      size="small"
-                      margin="normal"
-                      type={type}
-                      id={id}
+                  ) : type == "checkbox" ? (
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          error={Boolean(touched[id] && errors[id])}
+                          helperText={touched[id] && errors[id]}
+                          id={id}
+                          label={label}
+                          name={id}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values[id]}
+                          key={id + label + type}
+                          defaultChecked={initialValues}
+                          color="success"
+                        />
+
+                      }
                       label={label}
-                      name={id}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values[id]}
-                      variant="outlined"
-                      key={id + label + type}
                     />
-                  )
+                  ) :
+                    (
+                      <TextField
+                        error={Boolean(touched[id] && errors[id])}
+                        helperText={touched[id] && errors[id]}
+                        size="small"
+                        margin="normal"
+                        type={type}
+                        id={id}
+                        label={label}
+                        name={id}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values[id]}
+                        variant="outlined"
+                        key={id + label + type}
+                      />
+                    )
                 )}
               </div>
               <div>

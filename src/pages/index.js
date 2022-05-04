@@ -14,7 +14,8 @@ import AddPartner from "./Partner/AddPartner";
 import OnePartner from "./Partner/OnePartner";
 import EditPartner from "./Partner/EditPartner";
 import Partner from "./Partner/Partner";
-
+import User from "./users/User"
+import OneUser from "./users/OneUser"
 
 const PagesRoutes = () => {
   return (
@@ -28,10 +29,14 @@ const PagesRoutes = () => {
           <Route exact path="/news/:id" component={OneNews} />
           <Route exact path="/news/edit/:id" component={EditNewsForm} />
 
-          <Route exact path="/user" component={Partner} />
-          <Route path="/user/new" component={AddPartner} />
-          <Route exact path="/user/:id" component={OnePartner} />
-          <Route exact path="/user/edit/:id" component={EditPartner} />
+          
+          <Route exact path="/user" component={User} />
+          <Route exact path="/user/:id" component={OneUser} />
+
+          <Route exact path="/partner" component={Partner} />
+          <Route path="/partner/new" component={AddPartner} />
+          <Route exact path="/partner/:id" component={OnePartner} />
+          <Route exact path="/partner/edit/:id" component={EditPartner} />
 
           <Route exact path="/employee" component={Employee} />
           <Route path="/employee/add-employee" component={AddEmployee} />

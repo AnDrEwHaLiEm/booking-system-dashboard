@@ -93,9 +93,10 @@ export default function EditEmployee() {
       .then((res) => {
         console.log({ res });
         setValues(res.data.result);
-        console.log(values);
-        inputs.forEach(
-          (item) => (item.initialValue = res.data.result[item.id])
+        inputs.map(
+          (item) => {
+            (item.id == "avatar" ? item.initialValue = '' : item.initialValue = res.data.result[item.id])
+          }
         );
         setInputsData([...inputs]);
         console.log(inputsData);
@@ -104,18 +105,17 @@ export default function EditEmployee() {
       .catch((err) => {
         console.log(err.message);
       });
-  }, [inputsData]);
+  },inputsData);
 
   const handleUpdate = async (values, { resetForm }) => {
+    values._id = id;
     await authorizedAPIs
       .put("/employee/edit", values)
       .then((res) => {
-        console.log(res);
         dispatch(showAlert("this employee is updated successfully", "success"));
-        resetForm();
       })
       .catch((err) => {
-        console.log(err.message);
+        dispatch(showAlert(err.message, "error"));
       });
   };
 
