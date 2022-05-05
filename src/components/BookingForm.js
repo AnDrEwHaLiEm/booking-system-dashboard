@@ -16,6 +16,8 @@ import { makeStyles } from "@mui/styles";
 import Container from "@mui/material/Container";
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+
 
 // formik imports
 import { Formik } from "formik";
@@ -94,13 +96,14 @@ export default function BookingForm({
                   gridTemplateColumns: " auto auto auto auto",
                 }}
               >
-                {inputsProps.map(({ id, label, type, options }) =>
+                {inputsProps.map(({ id, label, type, options, disabled }) =>
                   options ? (
                     <FormControl
                       error={Boolean(touched[id] && errors[id])}
                       size="small"
                       margin="normal"
                       key={id + label + type}
+                      disabled={disabled}
                     >
                       <InputLabel id="demo-simple-select-label">
                         {label}
@@ -139,7 +142,7 @@ export default function BookingForm({
                           onBlur={handleBlur}
                           value={values[id]}
                           key={id + label + type}
-                          defaultChecked={initialValues}
+                          checked={values[id]}
                           color="success"
                         />
 
@@ -147,13 +150,12 @@ export default function BookingForm({
                       label={label}
                     />
                   ) :
-                    (
-                      <TextField
+                    type == "textarea" ? (
+                      <TextareaAutosize
                         error={Boolean(touched[id] && errors[id])}
                         helperText={touched[id] && errors[id]}
-                        size="small"
-                        margin="normal"
                         type={type}
+                        margin="normal"
                         id={id}
                         label={label}
                         name={id}
@@ -162,8 +164,30 @@ export default function BookingForm({
                         value={values[id]}
                         variant="outlined"
                         key={id + label + type}
+                        disabled={disabled}
+                        minRows={3}
+                        placeholder={label}
+                        style={{ width: 200 }}
                       />
-                    )
+                    ) :
+                      (
+                        <TextField
+                          error={Boolean(touched[id] && errors[id])}
+                          helperText={touched[id] && errors[id]}
+                          size="small"
+                          margin="normal"
+                          type={type}
+                          id={id}
+                          label={label}
+                          name={id}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values[id]}
+                          variant="outlined"
+                          key={id + label + type}
+                          disabled={disabled}
+                        />
+                      )
                 )}
               </div>
               <div>

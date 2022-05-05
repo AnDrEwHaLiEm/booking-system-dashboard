@@ -70,6 +70,7 @@ export default function User() {
       </Typography>
 
       <EnhancedTable
+        withEdit
         handleDeleteAPI={handleDelete}
         initialRows={user}
         headCells={intialHeadCells}

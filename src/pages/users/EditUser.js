@@ -13,56 +13,40 @@ const inputs = [
     validation: Yup.string().min(2).max(30).required("first name is required"),
     initialValue: "",
     label: "first name ",
-    disable: false,
     type: "text",
+    disabled: true,
   },
   {
     id: "lastName",
     validation: Yup.string().min(2).max(30).required("last name is required"),
     initialValue: "",
     label: "last name ",
-    disable: false,
     type: "text",
+    disabled: true,
   },
   {
     id: "email",
     validation: Yup.string().min(7).max(30).required("email is required"),
     initialValue: "",
     label: "email",
-    disable: false,
     type: "text",
+    disabled: true,
   },
   {
     id: "phoneNumber",
     validation: Yup.string().min(11).required("phone is required"),
     initialValue: "",
     label: "phone",
-    disable: false,
     type: "text",
+    disabled: true,
   },
   {
     id: "nationalId",
     validation: Yup.string().min(14).max(14).required("national Id is required"),
     initialValue: "",
     label: "national Id",
-    disable: false,
     type: "text",
-  },
-  {
-    id: "avatar",
-    validation: Yup.mixed().required("avatar is required"),
-    initialValue: "",
-    label: "avatar",
-    disable: false,
-    type: "file",
-  },
-  {
-    id: "password",
-    validation: Yup.string().min(0).max(30).required("password is required"),
-    initialValue: "",
-    label: "password",
-    disable: false,
-    type: "text",
+    disabled: true,
   },
   {
     id: "gender",
@@ -75,28 +59,28 @@ const inputs = [
     ],
     initialValue: "",
     label: "gender",
-    disable: false,
     type: "text",
+    disabled: true,
   },
   {
     id: "age",
     validation: Yup.number().required("age is required"),
     label: "age",
-    disable: false,
     type: "number",
     initialValue: '',
+    disabled: true,
   },
   {
     id: "isaPartner",
     validation: Yup.boolean(),
     label: "is a partner",
-    disable: false,
     type: "checkbox",
     initialValue: "true",
+    disabled: false,
   }
 ];
 
-export default function EditPartner() {
+export default function EditUser() {
   const { id } = useParams();
   const [values, setValues] = useState();
   const [inputsData, setInputsData] = useState([...inputs]);
@@ -110,7 +94,7 @@ export default function EditPartner() {
         setValues(res.data.result);
         inputs.map(
           (item) => {
-            (item.id == "avatar" ? item.initialValue = '' : item.initialValue = res.data.result[item.id])
+            (item.initialValue = res.data.result[item.id])
           }
         );
         setInputsData([...inputs]);
@@ -128,8 +112,6 @@ export default function EditPartner() {
       email,
       phoneNumber,
       nationalId,
-      avatar,
-      password,
       gender,
       age,
       isaPartner,
@@ -143,8 +125,6 @@ export default function EditPartner() {
         email,
         phoneNumber,
         nationalId,
-        avatar,
-        password,
         gender,
         age,
         isaPartner,
@@ -163,8 +143,8 @@ export default function EditPartner() {
       <BookingForm
         handleSubmit={handleUpdate}
         inputsProps={inputsData}
-        title="Edit Prtner "
-        submitLabel="Edit Partner"
+        title="Make Partner"
+        submitLabel="Make Partner"
       />
     </>
   ) : (

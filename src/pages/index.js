@@ -16,6 +16,7 @@ import EditPartner from "./Partner/EditPartner";
 import Partner from "./Partner/Partner";
 import User from "./users/User"
 import OneUser from "./users/OneUser"
+import EditUser from "./users/EditUser"
 import Company from "./Company/Company"
 import AddCompany from "./Company/AddCompany"
 import OneCompany from "./Company/OneCompany"
@@ -36,6 +37,7 @@ const PagesRoutes = () => {
 
           <Route exact path="/user" component={User} />
           <Route exact path="/user/:id" component={OneUser} />
+          <Route exact path="/user/edit/:id" component={EditUser} />
 
           <Route exact path="/partner" component={Partner} />
           <Route path="/partner/new" component={AddPartner} />

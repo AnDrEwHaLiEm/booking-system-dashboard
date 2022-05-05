@@ -10,22 +10,20 @@ import { useDispatch } from "react-redux";
 
 const intialHeadCells = [
   {
-    companyName: "Company Name",
+    id: "companyName",
     numeric: false,
-    label: "Company Name",
-    type: "string",
+    label: "company name",
   },
   {
-    address: "Address",
+    id: "address",
     numeric: false,
     label: "Address",
-    type: "string",
   },
-  {///////////////////////////////////////////////////////////////////////////
-    serves: "Serves",
+
+  {
+    id: "email",
     numeric: false,
-    label: "Serves",
-    type: "string",
+    label: "Email",
   },
 ];
 
@@ -45,17 +43,11 @@ export default function Company() {
         console.log(err.message);
       });
   };
-  // console.log({ company });
   useEffect(() => {
     authorizedAPIs
       .get("/company/showMany/100")
       .then((res) => {
-        const companysUnmergedNames = [...res.data.result];
-        companysUnmergedNames.forEach(
-          (company) =>
-            (company.fullName = company.firstName + " " + company.lastName)
-        );
-        setEmployees(companysUnmergedNames);
+        setEmployees(res.data.result);
       })
 
   }, []);

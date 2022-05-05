@@ -9,26 +9,41 @@ import { useDispatch } from "react-redux";
 
 const inputs = [
     {
-        id: "companyname",
+        id: "companyName",
         validation: Yup.string().min(2).max(30).required(" company name is required"),
         initialValue: "",
         label: "Company Name ",
         type: "text",
     },
     {
-        id: "Address",
+        id: "address",
         validation: Yup.string().min(2).max(30).required("Address is required"),
         initialValue: "",
         label: "Address ",
         type: "text",
     },
     {
+        id: "email",
+        validation: Yup.string().email().min(7).max(30).required("serves is required"),
+        initialValue: "",
+        label: "Email",
+        type: "text",
+    },
+    {
+        id: "phoneNumber",
+        validation: Yup.string().min(7).max(30).required("serves is required"),
+        initialValue: "",
+        label: "phone number",
+        type: "text",
+    },
+    {
         id: "serves",
         validation: Yup.string().min(7).max(30).required("serves is required"),
         initialValue: "",
-        label: "email",
-        type: "text",
+        label: "Serves",
+        type: "textarea",
     },
+
 
 ];
 
