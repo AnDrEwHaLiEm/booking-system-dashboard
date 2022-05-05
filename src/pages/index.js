@@ -16,6 +16,10 @@ import EditPartner from "./Partner/EditPartner";
 import Partner from "./Partner/Partner";
 import User from "./users/User"
 import OneUser from "./users/OneUser"
+import Company from "./Company/Company"
+import AddCompany from "./Company/AddCompany"
+import OneCompany from "./Company/OneCompany"
+import EditCompany from "./Company/EditCompany"
 
 const PagesRoutes = () => {
   return (
@@ -29,7 +33,7 @@ const PagesRoutes = () => {
           <Route exact path="/news/:id" component={OneNews} />
           <Route exact path="/news/edit/:id" component={EditNewsForm} />
 
-          
+
           <Route exact path="/user" component={User} />
           <Route exact path="/user/:id" component={OneUser} />
 
@@ -43,6 +47,11 @@ const PagesRoutes = () => {
           <Route path="/employee/edit/:id" component={EditEmployee} />
           <Route exact path="/employee/:id" component={OneEmployee} />
 
+
+          <Route exact path="/company" component={Company} />
+          <Route path="/company/add-company" component={AddCompany} />
+          <Route path="/company/edit/:id" component={EditCompany} />
+          <Route exact path="/company/:id" component={OneCompany} />
 
         </Switch>
       </PersistentDrawerRight>
