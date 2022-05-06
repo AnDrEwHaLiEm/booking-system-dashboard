@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { authorizedAPIs } from "../../API/axiosSetup";
 import { showAlert } from "../../Redux/actions/viewAlert";
 import { useDispatch } from "react-redux";
-
+import { useState, useEffect } from "react";
 
 
 
@@ -70,22 +70,49 @@ const inputs = [
     label: "gender",
     type: "text",
   },
-
   {
     id: "age",
     validation: Yup.number().required("age is required"),
     label: "age",
     type: "number",
     initialValue: '',
+  },
+  {
+    id: "workAt",
+    validation: Yup.string(),
+    label: "company Name",
+    type: "options",
+    initialValue: '',
+    options: [],
   }
 ];
 
 export default function AddPartner() {
+  const [flag, setFlag] = useState(false);
 
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
 
+    authorizedAPIs.get('/company/showMany/100')
+      .then((res) => {
+        inputs[9].options = [];
+        res.data.result.forEach(
+          (company) => {
+            let label = company.companyName;
+            let value = company._id;
+            inputs[9].options = [{ label, value }, ...inputs[9].options];
+          }
+        );
+        setFlag(true);
+        console.log(inputs);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
+  }, [])
 
 
 
@@ -104,14 +131,19 @@ export default function AddPartner() {
       });
   };
   return (
-    <>
-      <BookingForm
-        inputsProps={inputs}
-        title="Add Partner "
-        submitLabel="create"
-        handleSubmit={handleSubmit}
-      >
-      </BookingForm>
-    </>
+    flag ? (
+      <>
+        <BookingForm
+          inputsProps={inputs}
+          title="Add Partner "
+          submitLabel="create"
+          handleSubmit={handleSubmit}
+        >
+        </BookingForm>
+      </>
+    )
+      : (
+        <>Loading</>
+      )
   );
 }

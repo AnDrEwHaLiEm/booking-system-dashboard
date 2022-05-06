@@ -96,7 +96,8 @@ export default function BookingForm({
                   gridTemplateColumns: " auto auto auto auto",
                 }}
               >
-                {inputsProps.map(({ id, label, type, options, disabled }) =>
+                {inputsProps.map(({ id, label, type, options, disabled }) => (
+                  console.log(options),
                   options ? (
                     <FormControl
                       error={Boolean(touched[id] && errors[id])}
@@ -188,7 +189,7 @@ export default function BookingForm({
                           disabled={disabled}
                         />
                       )
-                )}
+                ))}
               </div>
               <div>
                 <Button
