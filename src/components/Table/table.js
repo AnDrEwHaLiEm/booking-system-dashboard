@@ -81,6 +81,17 @@ export default function EnhancedTable(props) {
       });
   };
 
+  const handleDeleteMany = async (index) => {
+    await handleDeleteAPI(index)
+      .then((res) => {
+        const splices_rows = rows.filter((element) => (index.includes(element._id) === false));
+        setRows(splices_rows);
+        setSelected(0);
+      }).catch((err) => {
+        console.log(err)
+      })
+  }
+
   useEffect(() => {
     setRows(initialRows);
     setSearchElement(headCells[headCells.length - 1].id);
@@ -175,20 +186,20 @@ export default function EnhancedTable(props) {
                 defaultValue={searchElement}
               >
                 {headCells.map(
-                  ({ id, label , type}) =>
+                  ({ id, label, type }) =>
                     id !== "edit" && (
                       <option key={id} value={id}>
                         {label}
                       </option>
                     )
 
-                   
+
                 )}
               </NativeSelect>
             </Box>
           </Box>
         )}
-        <EnhancedTableToolbar handleDelete={handleDelete} selected={selected} />
+        <EnhancedTableToolbar handleDelete={handleDeleteMany} selected={selected} />
         <TableContainer>
           <Table
             sx={{ minWidth: 750, padding: 0 }}
