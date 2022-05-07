@@ -11,7 +11,6 @@ export default function OnePartner() {
     authorizedAPIs
       .get(`/user/showOne/${id}`)
       .then((res) => {
-        console.log(res.data.result);
         setOnePartner(res.data.result);
       })
       .catch((err) => {

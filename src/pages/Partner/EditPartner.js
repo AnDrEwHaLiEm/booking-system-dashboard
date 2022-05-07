@@ -49,22 +49,6 @@ const inputs = [
     type: "text",
   },
   {
-    id: "avatar",
-    validation: Yup.mixed().required("avatar is required"),
-    initialValue: "",
-    label: "avatar",
-    disable: false,
-    type: "file",
-  },
-  {
-    id: "password",
-    validation: Yup.string().min(0).max(30).required("password is required"),
-    initialValue: "",
-    label: "password",
-    disable: false,
-    type: "text",
-  },
-  {
     id: "gender",
     validation: Yup.string()
       .oneOf(["Male", "Female"])
@@ -87,6 +71,14 @@ const inputs = [
     initialValue: '',
   },
   {
+    id: "workAt",
+    validation: Yup.string(),
+    label: "company Name",
+    type: "text",
+    initialValue: "",
+    options: [],
+  },
+  {
     id: "isaPartner",
     validation: Yup.boolean(),
     label: "is a partner",
@@ -103,18 +95,35 @@ export default function EditPartner() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    authorizedAPIs.get('/company/showMany/100')
+      .then((res) => {
+        const index = inputs.length - 2;
+        inputs[index].options = [];
+        res.data.result.forEach(
+          (company) => {
+            let label = company.companyName;
+            let value = company._id;
+            inputs[index].options = [{ label, value }, ...inputs[index].options];
+          }
+        );
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
+  })
+
+  useEffect(() => {
     authorizedAPIs
       .get(`/user/showOne/${id}`)
       .then((res) => {
-        console.log({ res });
         setValues(res.data.result);
         inputs.map(
           (item) => {
-            (item.id == "avatar" ? item.initialValue = '' : item.initialValue = res.data.result[item.id])
+            (item.initialValue = res.data.result[item.id])
           }
         );
         setInputsData([...inputs]);
-        console.log(inputsData);
       })
       .catch((err) => {
         console.log(err.message);
@@ -128,11 +137,10 @@ export default function EditPartner() {
       email,
       phoneNumber,
       nationalId,
-      avatar,
-      password,
       gender,
       age,
       isaPartner,
+      workAt,
     } = values;
     console.log(values);
     await authorizedAPIs
@@ -143,11 +151,10 @@ export default function EditPartner() {
         email,
         phoneNumber,
         nationalId,
-        avatar,
-        password,
         gender,
         age,
         isaPartner,
+        workAt,
       })
       .then((res) => {
         console.log(res);

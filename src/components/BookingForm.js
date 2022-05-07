@@ -97,7 +97,6 @@ export default function BookingForm({
                 }}
               >
                 {inputsProps.map(({ id, label, type, options, disabled }) => (
-                  console.log(options),
                   options ? (
                     <FormControl
                       error={Boolean(touched[id] && errors[id])}
