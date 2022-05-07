@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import Profile from '../../components/articles/Profile'
+import ProfileCompany from '../../components/ProfileCompany'
 import { useEffect, useState } from "react";
 import { authorizedAPIs } from "../../API/axiosSetup";
 
@@ -22,7 +22,7 @@ export default function OneCompany() {
 
     return (
 
-        <Profile {...company} />
+        <ProfileCompany {...company} />
 
     );
 }
