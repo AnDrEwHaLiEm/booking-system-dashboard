@@ -21,6 +21,9 @@ import Company from "./Company/Company"
 import AddCompany from "./Company/AddCompany"
 import OneCompany from "./Company/OneCompany"
 import EditCompany from "./Company/EditCompany"
+import AddHalls from "./Halls/AddHalls"
+import Halls from "./Halls/Halls";
+import EditHalls from "./Halls/EditHalls";
 
 const PagesRoutes = () => {
   return (
@@ -49,7 +52,10 @@ const PagesRoutes = () => {
           <Route path="/employee/edit/:id" component={EditEmployee} />
           <Route exact path="/employee/:id" component={OneEmployee} />
 
-
+          <Route exact path="/halls" component={Halls} />
+          <Route exact path="/halls/new" component={AddHalls} />
+          <Route exact path="halls/edit/:id" component={EditHalls} />
+          
           <Route exact path="/company" component={Company} />
           <Route path="/company/add-company" component={AddCompany} />
           <Route path="/company/edit/:id" component={EditCompany} />

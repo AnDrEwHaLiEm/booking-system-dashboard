@@ -30,7 +30,7 @@ const intialHeadCells = [
 
 
 export default function Company() {
-  const [company, setEmployees] = useState([]);
+  const [company, setCompany] = useState([]);
   const dispatch = useDispatch();
 
   const handleDelete = async (arr) => {
@@ -47,7 +47,7 @@ export default function Company() {
     authorizedAPIs
       .get("/company/showMany/100")
       .then((res) => {
-        setEmployees(res.data.result);
+        setCompany(res.data.result);
       })
 
   }, []);
