@@ -53,8 +53,8 @@ const PagesRoutes = () => {
           <Route exact path="/employee/:id" component={OneEmployee} />
 
           <Route exact path="/halls" component={Halls} />
-          <Route exact path="/halls/new" component={AddHalls} />
-          <Route exact path="halls/edit/:id" component={EditHalls} />
+          <Route path="/halls/new" component={AddHalls} />
+          <Route path="/halls/edit/:id" component={EditHalls} />
           
           <Route exact path="/company" component={Company} />
           <Route path="/company/add-company" component={AddCompany} />

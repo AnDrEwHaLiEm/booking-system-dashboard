@@ -100,7 +100,6 @@ export default function BookingForm({
                   options ? (
                     <FormControl
                       error={Boolean(touched[id] && errors[id])}
-                      size="small"
                       margin="normal"
                       key={id + label + type}
                       disabled={disabled}

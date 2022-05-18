@@ -24,20 +24,6 @@ const inputs = [
         type: "text",
     },
     {
-        id: "hallType",
-        validation: Yup.string()
-            .oneOf(["Stage", "Cinema", "theater"])
-            .required("Type is required"),
-        options: [
-            { value: "Stage", label: "Stage" },
-            { value: "Cinema", label: "Cinema" },
-            { value: "theater", label: "theater" }
-        ],
-        initialValue: "",
-        label: "type",
-        type: "options",
-    },
-    {
         id: "chairClassA",
         validation: Yup.number().required("chairClassA is required"),
         label: "Number of class A chair",
@@ -59,7 +45,21 @@ const inputs = [
         initialValue: '',
     },
     {
-        id: "companyName",
+        id: "hallType",
+        validation: Yup.string()
+            .oneOf(["Stage", "Cinema", "theater"])
+            .required("Type is required"),
+        options: [
+            { value: "Stage", label: "Stage" },
+            { value: "Cinema", label: "Cinema" },
+            { value: "theater", label: "theater" }
+        ],
+        initialValue: "",
+        label: "type",
+        type: "options",
+    },
+    {
+        id: "company_id",
         validation: Yup.string(),
         label: "company Name",
         type: "options",
@@ -73,7 +73,6 @@ export default function EditHalls() {
     const [values, setValues] = useState();
     const [inputsData, setInputsData] = useState([...inputs]);
     const dispatch = useDispatch();
-
     useEffect(() => {
         authorizedAPIs.get('/company/showMany/100')
             .then((res) => {
@@ -86,7 +85,6 @@ export default function EditHalls() {
                         inputs[index].options = [{ label, value }, ...inputs[index].options];
                     }
                 );
-                console.log(inputs[index].options)
             })
             .catch((err) => {
                 console.log(err.message);
@@ -102,12 +100,12 @@ export default function EditHalls() {
                 setValues(res.data.result);
                 inputs.map(
                     (item) => {
+
                         (item.initialValue = res.data.result[item.id])
                     }
                 );
                 setInputsData([...inputs]);
-                console.log(inputsData);
-
+                console.log(inputs)
             })
             .catch((err) => {
                 console.log(err.message);
@@ -138,6 +136,6 @@ export default function EditHalls() {
             />
         </>
     ) : (
-        <> NOT FOUND</>
+        <> Not FOUND</>
     )
 }
