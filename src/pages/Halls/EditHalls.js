@@ -72,10 +72,12 @@ export default function EditHalls() {
     const { id } = useParams();
     const [values, setValues] = useState();
     const [inputsData, setInputsData] = useState([...inputs]);
+    const [flag, setFlag] = useState(false);
     const dispatch = useDispatch();
     useEffect(() => {
         authorizedAPIs.get('/company/showMany/100')
             .then((res) => {
+                
                 const index = inputs.length - 1;
                 inputs[index].options = [];
                 res.data.result.forEach(
@@ -105,7 +107,7 @@ export default function EditHalls() {
                     }
                 );
                 setInputsData([...inputs]);
-                console.log(inputs)
+                setFlag(true);
             })
             .catch((err) => {
                 console.log(err.message);
@@ -126,7 +128,7 @@ export default function EditHalls() {
 
 
 
-    return values ? (
+    return flag === true ? (values ? (
         <>
             <BookingForm
                 handleSubmit={handleUpdate}
@@ -137,5 +139,5 @@ export default function EditHalls() {
         </>
     ) : (
         <> Not FOUND</>
-    )
+    )) : <>loading ... </>
 }

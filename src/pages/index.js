@@ -24,6 +24,7 @@ import EditCompany from "./Company/EditCompany"
 import AddHalls from "./Halls/AddHalls"
 import Halls from "./Halls/Halls";
 import EditHalls from "./Halls/EditHalls";
+import Ticket from "./Ticket/Ticket";
 
 const PagesRoutes = () => {
   return (
@@ -37,6 +38,8 @@ const PagesRoutes = () => {
           <Route exact path="/news/:id" component={OneNews} />
           <Route exact path="/news/edit/:id" component={EditNewsForm} />
 
+
+          <Route exact path="/ticket" component={Ticket} />
 
           <Route exact path="/user" component={User} />
           <Route exact path="/user/:id" component={OneUser} />
@@ -55,7 +58,7 @@ const PagesRoutes = () => {
           <Route exact path="/halls" component={Halls} />
           <Route path="/halls/new" component={AddHalls} />
           <Route path="/halls/edit/:id" component={EditHalls} />
-          
+          <Route path="/halls" component={Halls} />
           <Route exact path="/company" component={Company} />
           <Route path="/company/add-company" component={AddCompany} />
           <Route path="/company/edit/:id" component={EditCompany} />
