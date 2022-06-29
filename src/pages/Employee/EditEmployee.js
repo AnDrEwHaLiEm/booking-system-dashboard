@@ -93,9 +93,9 @@ export default function EditEmployee() {
       .then((res) => {
         console.log({ res });
         setValues(res.data.result);
-        inputs.map(
+        inputs.forEach(
           (item) => {
-            (item.id == "avatar" ? item.initialValue = '' : item.initialValue = res.data.result[item.id])
+            (item.id === "avatar" ? item.initialValue = '' : item.initialValue = res.data.result[item.id])
           }
         );
         setInputsData([...inputs]);
@@ -105,7 +105,7 @@ export default function EditEmployee() {
       .catch((err) => {
         console.log(err.message);
       });
-  },inputsData);
+  }, inputsData);
 
   const handleUpdate = async (values, { resetForm }) => {
     values._id = id;
@@ -121,13 +121,13 @@ export default function EditEmployee() {
 
 
 
-  return (
+  return (values ?
     <BookingForm
       handleSubmit={handleUpdate}
       inputsProps={inputsData}
       title="Edit employee "
       submitLabel="Edit employee"
-    />
+    /> : <>loading ...</>
 
   );
 }

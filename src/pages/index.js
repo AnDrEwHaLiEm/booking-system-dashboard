@@ -6,10 +6,6 @@ import Employee from "./Employee/Employee";
 import AddEmployee from "./Employee/AddEmployee";
 import OneEmployee from "./Employee/OneEmployee";
 import EditEmployee from "./Employee/EditEmployee";
-import NewsForm from "./news/NewsForm";
-import OneNews from "./news/OneNews";
-import EditNewsForm from "./news/EditNewsForm";
-import News from "./news/News";
 import AddPartner from "./Partner/AddPartner";
 import OnePartner from "./Partner/OnePartner";
 import EditPartner from "./Partner/EditPartner";
@@ -32,11 +28,6 @@ const PagesRoutes = () => {
       <PersistentDrawerRight>
         <Switch>
           <Route exact path="/" component={Home} />
-
-          <Route exact path="/news" component={News} />
-          <Route path="/news/new" component={NewsForm} />
-          <Route exact path="/news/:id" component={OneNews} />
-          <Route exact path="/news/edit/:id" component={EditNewsForm} />
 
 
           <Route exact path="/ticket" component={Ticket} />

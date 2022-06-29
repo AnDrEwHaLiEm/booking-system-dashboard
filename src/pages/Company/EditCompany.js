@@ -56,15 +56,13 @@ export default function EditCompany() {
         authorizedAPIs
             .get(`/company/showOne/${id}`)
             .then((res) => {
-                console.log({ res });
                 setValues(res.data.result);
-                inputs.map(
+                inputs.forEach(
                     (item) => {
                         (item.initialValue = res.data.result[item.id])
                     }
                 );
                 setInputsData([...inputs]);
-                console.log(inputsData);
 
             })
             .catch((err) => {
@@ -86,13 +84,13 @@ export default function EditCompany() {
 
 
 
-    return (
+    return (values ?
         <BookingForm
             handleSubmit={handleUpdate}
             inputsProps={inputsData}
             title="Edit company "
             submitLabel="Edit company"
-        />
+        /> : <>loading ...</>
 
     );
 }

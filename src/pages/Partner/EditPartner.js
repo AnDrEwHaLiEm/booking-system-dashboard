@@ -118,7 +118,7 @@ export default function EditPartner() {
       .get(`/user/showOne/${id}`)
       .then((res) => {
         setValues(res.data.result);
-        inputs.map(
+        inputs.forEach(
           (item) => {
             (item.initialValue = res.data.result[item.id])
           }

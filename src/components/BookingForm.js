@@ -128,7 +128,7 @@ export default function BookingForm({
                         {touched[id] && errors[id]}
                       </FormHelperText>
                     </FormControl>
-                  ) : type == "checkbox" ? (
+                  ) : type === "checkbox" ? (
                     <FormControlLabel
                       control={
                         <Checkbox
@@ -149,7 +149,7 @@ export default function BookingForm({
                       label={label}
                     />
                   ) :
-                    type == "textarea" ? (
+                    type === "textarea" ? (
                       <TextareaAutosize
                         error={Boolean(touched[id] && errors[id])}
                         helperText={touched[id] && errors[id]}

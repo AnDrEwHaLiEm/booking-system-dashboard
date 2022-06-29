@@ -6,10 +6,7 @@ import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Checkbox from "@mui/material/Checkbox";
 import TableHead from "@mui/material/TableHead";
-import avatarImage from "../../assets/avatar.jpg";
-
 // material components
-import { Avatar } from "@mui/material";
 
 export default function EnhancedTableHead(props) {
   const {

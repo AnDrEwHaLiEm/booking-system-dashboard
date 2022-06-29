@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 // material components
 import {
@@ -8,12 +7,10 @@ import {
     Card,
     Stack,
     CardContent,
-    Button,
     Avatar,
     Typography,
 } from "@mui/material";
 
-import { useState } from "react";
 
 function ProfileCompany({
     companyName,

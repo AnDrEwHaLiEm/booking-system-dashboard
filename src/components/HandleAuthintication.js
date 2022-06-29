@@ -12,7 +12,6 @@ const Handleauthintication = () => {
   const [isloading, setIsloading] = useState(true);
   const handleLogOut = () => Cookies.remove(process.env.REACT_APP_TOKEN_NAME);
   const handelSubmit = async (data) => {
-    console.log(data);
     await authorizedAPIs
       .post(
         "/authintication/login", data

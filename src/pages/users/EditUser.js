@@ -92,7 +92,7 @@ export default function EditUser() {
       .then((res) => {
         console.log({ res });
         setValues(res.data.result);
-        inputs.map(
+        inputs.forEach(
           (item) => {
             (item.initialValue = res.data.result[item.id])
           }

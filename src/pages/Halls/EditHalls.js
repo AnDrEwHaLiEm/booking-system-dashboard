@@ -77,7 +77,7 @@ export default function EditHalls() {
     useEffect(() => {
         authorizedAPIs.get('/company/showMany/100')
             .then((res) => {
-                
+
                 const index = inputs.length - 1;
                 inputs[index].options = [];
                 res.data.result.forEach(
@@ -100,7 +100,7 @@ export default function EditHalls() {
             .get(`/halls/showOne/${id}`)
             .then((res) => {
                 setValues(res.data.result);
-                inputs.map(
+                inputs.forEach(
                     (item) => {
 
                         (item.initialValue = res.data.result[item.id])

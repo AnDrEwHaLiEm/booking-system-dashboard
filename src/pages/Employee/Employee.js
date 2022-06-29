@@ -1,7 +1,6 @@
 import EnhancedTable from "../../components/Table/table";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import avatarImage from "../../assets/avatar.jpg";
 import { useEffect, useState } from "react";
 import { authorizedAPIs } from "../../API/axiosSetup";
 import { showAlert } from "../../Redux/actions/viewAlert";

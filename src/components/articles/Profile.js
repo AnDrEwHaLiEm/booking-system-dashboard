@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import avatarImage from "../../assets/avatar.jpg";
 
 // material components
@@ -9,11 +8,9 @@ import {
   Card,
   Avatar,
   CardContent,
-  Button,
   Typography,
 } from "@mui/material";
 
-import { useState } from "react";
 
 function Profile({
   avatar,

@@ -3,9 +3,6 @@ import Profile from '../../components/articles/Profile'
 import { useEffect, useState } from "react";
 import { authorizedAPIs } from "../../API/axiosSetup";
 
-import avatarImage from "../../assets/avatar.jpg";
-
-
 
 export default function OneEmployee() {
   const { id } = useParams();
