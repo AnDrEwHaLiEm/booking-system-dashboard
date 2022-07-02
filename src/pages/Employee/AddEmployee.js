@@ -91,6 +91,7 @@ export default function AddEmployee() {
         resetForm();
       })
       .catch((error) => {
+        dispatch(showAlert(error.message, "error"))
         console.log(error);
       });
   };

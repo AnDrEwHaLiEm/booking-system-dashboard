@@ -107,26 +107,12 @@ export default function EditUser() {
 
   const handleUpdate = async (values, { resetForm }) => {
     const {
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-      nationalId,
-      gender,
-      age,
       isaPartner,
     } = values;
     console.log(values);
     await authorizedAPIs
       .put("/user/edit", {
         _id: id,
-        firstName,
-        lastName,
-        email,
-        phoneNumber,
-        nationalId,
-        gender,
-        age,
         isaPartner,
       })
       .then((res) => {

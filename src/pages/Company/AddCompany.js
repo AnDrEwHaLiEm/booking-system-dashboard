@@ -58,6 +58,7 @@ export default function AddCompany() {
                 resetForm();
             })
             .catch((error) => {
+                dispatch(showAlert(error, "error"));
                 console.log(error);
             });
     };

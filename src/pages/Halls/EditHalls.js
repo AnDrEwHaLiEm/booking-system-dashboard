@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { authorizedAPIs } from "../../API/axiosSetup";
 import { showAlert } from "../../Redux/actions/viewAlert";
 import { useDispatch } from "react-redux";
+import CircularIndeterminate from "../../components/CircularIndeterminate";
 
 
 const inputs = [
@@ -110,6 +111,7 @@ export default function EditHalls() {
                 setFlag(true);
             })
             .catch((err) => {
+                dispatch(showAlert(err.message, "error"));
                 console.log(err.message);
             });
     }, inputsData);
@@ -139,5 +141,5 @@ export default function EditHalls() {
         </>
     ) : (
         <> Not FOUND</>
-    )) : <>loading ... </>
+    )) : <CircularIndeterminate />
 }

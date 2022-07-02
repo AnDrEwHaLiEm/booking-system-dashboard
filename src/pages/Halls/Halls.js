@@ -44,6 +44,7 @@ export default function Halls() {
                 dispatch(showAlert("deleted successfully ", "success"));
             })
             .catch((err) => {
+                dispatch(showAlert(err.message, "error"));
                 console.log(err.message);
             });
     };

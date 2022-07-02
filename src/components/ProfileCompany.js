@@ -5,9 +5,7 @@ import {
     CardHeader,
     Divider,
     Card,
-    Stack,
     CardContent,
-    Avatar,
     Typography,
 } from "@mui/material";
 
@@ -17,8 +15,7 @@ function ProfileCompany({
     address,
     email,
     phoneNumber,
-    serves,
-    admin,
+    serves
 }) {
     return (
         <Card style={{ margin: "auto", maxWidth: 400, "*": { padding: 0 } }}>
@@ -35,21 +32,6 @@ function ProfileCompany({
                 <Divider sx={{ marginY: 2 }} />
                 <Typography variant="body2">{"serves : " + serves}</Typography>
                 <Divider sx={{ marginY: 2 }} />
-                <Typography variant="body2">admin : </Typography>
-                <Stack direction="row">
-                    {admin.map(({ firstName, lastName, avatar }) => (
-                        <CardHeader
-                            key={firstName + avatar}
-                            avatar={
-                                <Avatar alt={firstName + " " + lastName} src={avatar}>
-                                    {" "}
-                                    {firstName}{" "}{lastName}
-                                </Avatar>
-                            }
-                            title={firstName + " " + lastName}
-                        />
-                    ))}
-                </Stack>
             </CardContent>
         </Card>
     );

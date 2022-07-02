@@ -4,6 +4,7 @@ import { authorizedAPIs } from "../../API/axiosSetup";
 import { showAlert } from "../../Redux/actions/viewAlert";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
+import CircularIndeterminate from "../../components/CircularIndeterminate";
 
 
 
@@ -30,7 +31,7 @@ const inputs = [
         options: [
             { value: "Stage", label: "Stage" },
             { value: "Cinema", label: "Cinema" },
-            { value: "theater", label:"theater"}
+            { value: "theater", label: "theater" }
         ],
         initialValue: "",
         label: "type",
@@ -107,6 +108,7 @@ export default function AddHalls() {
                 resetForm();
             })
             .catch((err) => {
+                dispatch(showAlert(err.message, "error"))
                 console.log(err.message);
             });
     };
@@ -123,7 +125,7 @@ export default function AddHalls() {
             </>
         )
             : (
-                <>Loading</>
+                <CircularIndeterminate />
             )
     );
 }

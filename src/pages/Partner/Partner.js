@@ -68,10 +68,6 @@ export default function Partner() {
       <Typography gutterBottom variant="h6" component="div" align="center">
         Partner
       </Typography>
-      <Button variant="contained" component={Link} to="/partner/new">
-        add partner
-      </Button>
-
 
       <EnhancedTable
         withEdit

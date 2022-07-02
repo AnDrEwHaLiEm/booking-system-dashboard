@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { authorizedAPIs } from "../../API/axiosSetup";
 import { showAlert } from "../../Redux/actions/viewAlert";
 import { useDispatch } from "react-redux";
+import CircularIndeterminate from "../../components/CircularIndeterminate";
 
 
 const inputs = [
@@ -127,7 +128,7 @@ export default function EditEmployee() {
       inputsProps={inputsData}
       title="Edit employee "
       submitLabel="Edit employee"
-    /> : <>loading ...</>
+    /> : <CircularIndeterminate />
 
   );
 }

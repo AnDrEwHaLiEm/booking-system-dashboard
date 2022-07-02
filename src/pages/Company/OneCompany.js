@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import ProfileCompany from '../../components/ProfileCompany'
 import { useEffect, useState } from "react";
 import { authorizedAPIs } from "../../API/axiosSetup";
+import CircularIndeterminate from "../../components/CircularIndeterminate";
 
 
 
@@ -24,7 +25,7 @@ export default function OneCompany() {
     return (
         value ?
             <ProfileCompany {...company} />
-            : <div>loading . . .</div>
+            : <CircularIndeterminate />
 
     );
 }

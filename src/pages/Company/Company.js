@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { authorizedAPIs } from "../../API/axiosSetup";
 import { showAlert } from "../../Redux/actions/viewAlert";
 import { useDispatch } from "react-redux";
+import CircularIndeterminate from "../../components/CircularIndeterminate";
 
 
 const intialHeadCells = [
@@ -56,15 +57,18 @@ export default function Company() {
       <Button variant="contained" component={Link} to="/company/add-company">
         Add Company
       </Button>
-
-      <EnhancedTable
-        withEdit
-        handleDeleteAPI={handleDelete}
-        initialRows={company}
-        headCells={intialHeadCells}
-        path={"/company/"}
-      />
-
+      {
+        company ?
+          <EnhancedTable
+            withEdit
+            handleDeleteAPI={handleDelete}
+            initialRows={company}
+            headCells={intialHeadCells}
+            path={"/company/"}
+          />
+          :
+          <CircularIndeterminate />
+      }
     </div>
   );
 }

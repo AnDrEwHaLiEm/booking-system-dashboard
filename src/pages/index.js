@@ -6,7 +6,6 @@ import Employee from "./Employee/Employee";
 import AddEmployee from "./Employee/AddEmployee";
 import OneEmployee from "./Employee/OneEmployee";
 import EditEmployee from "./Employee/EditEmployee";
-import AddPartner from "./Partner/AddPartner";
 import OnePartner from "./Partner/OnePartner";
 import EditPartner from "./Partner/EditPartner";
 import Partner from "./Partner/Partner";
@@ -37,7 +36,6 @@ const PagesRoutes = () => {
           <Route exact path="/user/edit/:id" component={EditUser} />
 
           <Route exact path="/partner" component={Partner} />
-          <Route path="/partner/new" component={AddPartner} />
           <Route exact path="/partner/:id" component={OnePartner} />
           <Route exact path="/partner/edit/:id" component={EditPartner} />
 
@@ -50,6 +48,7 @@ const PagesRoutes = () => {
           <Route path="/halls/new" component={AddHalls} />
           <Route path="/halls/edit/:id" component={EditHalls} />
           <Route path="/halls" component={Halls} />
+
           <Route exact path="/company" component={Company} />
           <Route path="/company/add-company" component={AddCompany} />
           <Route path="/company/edit/:id" component={EditCompany} />

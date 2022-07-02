@@ -6,6 +6,7 @@ import { useParams } from "react-router";
 import { authorizedAPIs } from "../../API/axiosSetup";
 import { showAlert } from "../../Redux/actions/viewAlert";
 import { useDispatch } from "react-redux";
+import CircularIndeterminate from '../../components/CircularIndeterminate';
 
 const inputs = [
   {
@@ -13,7 +14,7 @@ const inputs = [
     validation: Yup.string().min(2).max(30).required("first name is required"),
     initialValue: "",
     label: "first name ",
-    disable: false,
+    disabled: true,
     type: "text",
   },
   {
@@ -21,7 +22,7 @@ const inputs = [
     validation: Yup.string().min(2).max(30).required("last name is required"),
     initialValue: "",
     label: "last name ",
-    disable: false,
+    disabled: true,
     type: "text",
   },
   {
@@ -29,7 +30,7 @@ const inputs = [
     validation: Yup.string().min(7).max(30).required("email is required"),
     initialValue: "",
     label: "email",
-    disable: false,
+    disabled: true,
     type: "text",
   },
   {
@@ -37,7 +38,7 @@ const inputs = [
     validation: Yup.string().min(11).required("phone is required"),
     initialValue: "",
     label: "phone",
-    disable: false,
+    disabled: true,
     type: "text",
   },
   {
@@ -45,7 +46,7 @@ const inputs = [
     validation: Yup.string().min(14).max(14).required("national Id is required"),
     initialValue: "",
     label: "national Id",
-    disable: false,
+    disabled: true,
     type: "text",
   },
   {
@@ -59,16 +60,17 @@ const inputs = [
     ],
     initialValue: "",
     label: "gender",
-    disable: false,
+    disabled: true,
     type: "text",
   },
   {
     id: "age",
     validation: Yup.number().required("age is required"),
     label: "age",
-    disable: false,
+    disabled: true,
     type: "number",
     initialValue: '',
+
   },
   {
     id: "workAt",
@@ -126,19 +128,13 @@ export default function EditPartner() {
         setInputsData([...inputs]);
       })
       .catch((err) => {
+        dispatch(showAlert(err.message, "error"));
         console.log(err.message);
       });
   }, inputsData);
 
   const handleUpdate = async (values, { resetForm }) => {
     const {
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-      nationalId,
-      gender,
-      age,
       isaPartner,
       workAt,
     } = values;
@@ -146,13 +142,6 @@ export default function EditPartner() {
     await authorizedAPIs
       .put("/user/edit", {
         _id: id,
-        firstName,
-        lastName,
-        email,
-        phoneNumber,
-        nationalId,
-        gender,
-        age,
         isaPartner,
         workAt,
       })
@@ -175,6 +164,6 @@ export default function EditPartner() {
       />
     </>
   ) : (
-    <> NOT FOUND</>
+    <CircularIndeterminate />
   );
 }

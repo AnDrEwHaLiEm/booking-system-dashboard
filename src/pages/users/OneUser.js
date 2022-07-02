@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Profile from "../../components/articles/Profile";
 import { useState, useEffect } from "react";
 import { authorizedAPIs } from "../../API/axiosSetup";
+import CircularIndeterminate from "../../components/CircularIndeterminate";
 
 export default function OneUser() {
   const { id } = useParams();
@@ -25,6 +26,6 @@ export default function OneUser() {
     <Profile {...oneUser} />
 
   ) :
-    <>Loading...</>
+    <CircularIndeterminate />
     ;
 }

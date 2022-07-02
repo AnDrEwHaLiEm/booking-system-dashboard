@@ -40,6 +40,8 @@ export default function Employee() {
         dispatch(showAlert("deleted successfully ", "success"));
       })
       .catch((err) => {
+        dispatch(showAlert("Can't delete", "error"));
+        window.location.reload();
         console.log(err.message);
       });
   };
