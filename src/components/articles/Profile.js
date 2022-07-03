@@ -1,5 +1,4 @@
 import React from "react";
-import avatarImage from "../../assets/avatar.jpg";
 
 // material components
 import {
@@ -33,7 +32,7 @@ function Profile({
             sx={{ width: 56, height: 56 }}
             aria-label="recipe"
           >
-            <img style={{ width: "inherit" }} src={avatarImage} />
+            <img style={{ width: "inherit" }} src={avatar} />
           </Avatar>
         }
         title={firstName + " " + lastName}

@@ -1,6 +1,6 @@
 import BookingForm from '../../components/BookingForm'
 import * as Yup from "yup";
-import { authorizedAPIs } from "../../API/axiosSetup";
+import { uploadImageAPIS } from "../../API/axiosSetup";
 import { showAlert } from "../../Redux/actions/viewAlert";
 import { useDispatch } from "react-redux";
 
@@ -83,17 +83,24 @@ const inputs = [
 export default function AddEmployee() {
   const dispatch = useDispatch();
   const addEmployee = async (values, { resetForm }) => {
-    authorizedAPIs
-      .post("/employee/new", values)
-      .then((res) => {
-        console.log({ res });
-        dispatch(showAlert("this employee is add successfully", "success"));
-        resetForm();
-      })
-      .catch((error) => {
-        dispatch(showAlert(error.message, "error"))
-        console.log(error);
-      });
+    const formData = new FormData();
+    var imagefile = document.querySelector('#avatar');
+    formData.append("avatarImage", imagefile.files[0]);
+    formData.append("firstName", values.firstName);
+    formData.append("lastName", values.lastName);
+    formData.append("email", values.email.department);
+    formData.append("phoneNumber", values.phoneNumber);
+    formData.append("nationalId", values.nationalId);
+    formData.append("password", values.password);
+    formData.append("gender", values.gender);
+    formData.append("age", values.age);
+
+    await uploadImageAPIS.post('/employee/new', formData).then((res) => {
+      dispatch(showAlert("successfully Operation", "success"));
+      resetForm();
+    }).catch((err) =>
+      dispatch(showAlert(err.message, "error"))
+    );
   };
   return (
     <>

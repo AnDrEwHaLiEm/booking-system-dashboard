@@ -50,8 +50,11 @@ export default function User() {
         const userUnmergedNames = [...res.data.result];
         userUnmergedNames.forEach(
           (user) =>
-            (user.fullName = user.firstName + " " + user.lastName)
+          (user.fullName = user.firstName + " " + user.lastName,
+            user.avatar = process.env.REACT_APP_MY_BACKEND_HOST + process.env.REACT_APP_USER_AVATAR_PATH + user.avatar
+          )
         );
+        console.log(userUnmergedNames);
         setuser(userUnmergedNames);
       })
       .catch((err) => {

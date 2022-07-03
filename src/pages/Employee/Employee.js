@@ -45,7 +45,6 @@ export default function Employee() {
         console.log(err.message);
       });
   };
- // console.log({ employees });
   useEffect(() => {
     authorizedAPIs
       .get("/employee/showMany/100")
@@ -53,11 +52,14 @@ export default function Employee() {
         const employeesUnmergedNames = [...res.data.result];
         employeesUnmergedNames.forEach(
           (employee) =>
-            (employee.fullName = employee.firstName + " " + employee.lastName)
+          (employee.fullName = employee.firstName + " " + employee.lastName,
+            employee.avatar = process.env.REACT_APP_MY_BACKEND_HOST + process.env.REACT_APP_EMPLOYEE_AVATAR_PATH + employee.avatar
+          )
         );
+        console.log(employeesUnmergedNames);
         setEmployees(employeesUnmergedNames);
       })
-     
+
   }, []);
 
   return (
@@ -65,15 +67,14 @@ export default function Employee() {
       <Button variant="contained" component={Link} to="/employee/add-employee">
         Add employee
       </Button>
-    
-        <EnhancedTable
-          withEdit
-          handleDeleteAPI={handleDelete}
-          initialRows={employees}
-          headCells={intialHeadCells}
-          path={"/employee/"}
-        />
-      
+
+      <EnhancedTable
+        handleDeleteAPI={handleDelete}
+        initialRows={employees}
+        headCells={intialHeadCells}
+        path={"/employee/"}
+      />
+
     </div>
   );
 }

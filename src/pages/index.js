@@ -5,7 +5,6 @@ import Home from "./Home";
 import Employee from "./Employee/Employee";
 import AddEmployee from "./Employee/AddEmployee";
 import OneEmployee from "./Employee/OneEmployee";
-import EditEmployee from "./Employee/EditEmployee";
 import OnePartner from "./Partner/OnePartner";
 import EditPartner from "./Partner/EditPartner";
 import Partner from "./Partner/Partner";
@@ -41,7 +40,6 @@ const PagesRoutes = () => {
 
           <Route exact path="/employee" component={Employee} />
           <Route path="/employee/add-employee" component={AddEmployee} />
-          <Route path="/employee/edit/:id" component={EditEmployee} />
           <Route exact path="/employee/:id" component={OneEmployee} />
 
           <Route exact path="/halls" component={Halls} />

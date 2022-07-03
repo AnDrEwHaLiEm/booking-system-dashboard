@@ -43,7 +43,7 @@ export default function CustomTableRow({
                   key={key.id}
                   id={key.id}
                 >
-                  <img style={{ width: "inherit" }} src={avatarImage} />
+                  <img style={{ width: "inherit" ,size:"cover"}} src={rowValues[key.id]} />
                 </Avatar>
               </TableCell>
             ):

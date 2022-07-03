@@ -14,7 +14,11 @@ export default function OnePartner() {
     authorizedAPIs
       .get(`/user/showOne/${id}`)
       .then((res) => {
-        setOnePartner(res.data.result);
+        let userData = res.data.result;
+        const { avatar } = userData;
+        userData.avatar = process.env.REACT_APP_MY_BACKEND_HOST + process.env.REACT_APP_USER_AVATAR_PATH + avatar;
+        console.log(userData);
+        setOnePartner(userData);
       })
       .catch((err) => {
         dispatch(showAlert(err.message, "error"));

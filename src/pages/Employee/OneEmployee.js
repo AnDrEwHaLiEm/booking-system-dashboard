@@ -13,7 +13,9 @@ export default function OneEmployee() {
     authorizedAPIs
       .get(`/employee/showOne/${id}`)
       .then((res) => {
-        console.log(res);
+        let employeeData = res.data.result;
+        const { avatar } = employeeData; 
+        employeeData.avatar = process.env.REACT_APP_MY_BACKEND_HOST + process.env.REACT_APP_EMPLOYEE_AVATAR_PATH + avatar;
         setEmployee(res.data.result);
       })
 

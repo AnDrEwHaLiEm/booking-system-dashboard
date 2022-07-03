@@ -10,7 +10,7 @@ const authinticationAPIs = axios.create({
   },
 });
 
- const token = Cookies.get(process.env.REACT_APP_TOKEN_NAME);
+const token = Cookies.get(process.env.REACT_APP_TOKEN_NAME);
 console.log(token);
 const authorizedAPIs = axios.create({
   baseURL: `${process.env.REACT_APP_MY_BACKEND_HOST}`,
@@ -22,4 +22,14 @@ const authorizedAPIs = axios.create({
   },
 });
 
-export { authinticationAPIs, authorizedAPIs };
+const uploadImageAPIS = axios.create({
+  baseURL: `${process.env.REACT_APP_MY_BACKEND_HOST}`,
+  timeout: 3000,
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    'Content-Type': 'multipart/form-data',
+    authorization: token,
+  },
+})
+
+export { authinticationAPIs, authorizedAPIs, uploadImageAPIS };

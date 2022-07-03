@@ -31,7 +31,7 @@ const intialHeadCells = [
 
 export default function Partner() {
 
-  const [user, setuser] = useState([]);
+  const [user, setUser] = useState([]);
   const dispatch = useDispatch();
 
   const handleDelete = async (arr) => {
@@ -52,9 +52,12 @@ export default function Partner() {
         const userUnmergedNames = [...res.data.result];
         userUnmergedNames.forEach(
           (user) =>
-            (user.fullName = user.firstName + " " + user.lastName)
+          (user.fullName = user.firstName + " " + user.lastName,
+            user.avatar = process.env.REACT_APP_MY_BACKEND_HOST + process.env.REACT_APP_USER_AVATAR_PATH + user.avatar
+          )
         );
-        setuser(userUnmergedNames);
+        console.log(userUnmergedNames);
+        setUser(userUnmergedNames);
       })
       .catch((err) => {
         console.log(err.message);
