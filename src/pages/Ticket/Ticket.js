@@ -6,6 +6,53 @@ import { useDispatch } from "react-redux";
 import { Formik, Field, Form } from "formik";
 import BookingForm from "../../components/BookingForm";
 import { showAlert } from "../../Redux/actions/viewAlert";
+import { styled } from '@mui/material/styles';
+import Stack from '@mui/material/Stack';
+import { pink } from '@mui/material/colors';
+
+const BootstrapButton = styled(Button)({
+  boxShadow: 'none',
+  textTransform: 'none',
+  fontSize: 16,
+  padding: '6px 12px',
+  border: '1px solid',
+  lineHeight: 1.5,
+  backgroundColor: '#BB3B62',
+  borderColor: '#BB3B62',
+  fontFamily: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(','),
+  '&:hover': {
+    backgroundColor: '#BB3B62',
+    borderColor: '#BB3B62',
+    boxShadow: 'none',
+  },
+  '&:active': {
+    boxShadow: 'none',
+    backgroundColor: '#BB3B62',
+    borderColor: '#BB3B62',
+  },
+  '&:focus': {
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+  },
+});
+
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(pink[700]),
+  backgroundColor: pink[700],
+  '&:hover': {
+    backgroundColor: pink[700],
+  },
+}));
 
 
 /*
@@ -160,7 +207,7 @@ export default function Ticket() {
             >
                 <Form>
                     <Field name="TicketId" type="text" />
-                    <Button type="submit">Submit</Button>
+                    <ColorButton type="submit">Submit</ColorButton>
                 </Form>
             </Formik>
             {values ? (

@@ -23,6 +23,13 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Button } from "@mui/material";
 import Cookies from "js-cookie";
 import { useHistory } from "react-router";
+import HandshakeIcon from '@mui/icons-material/Handshake';
+import PersonIcon from '@mui/icons-material/Person';
+import BookOnlineIcon from '@mui/icons-material/BookOnline';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import ApartmentIcon from '@mui/icons-material/Apartment';
+import AdbIcon from '@mui/icons-material/Adb';
+import { createTheme } from '@mui/material/styles';
 
 const drawerWidth = 240;
 
@@ -95,11 +102,35 @@ export default function PersistentDrawerLeft(props) {
     setOpen(false);
   };
 
+
+  const themess = createTheme({
+
+    palette: {
+      type: 'dark',
+
+      primary: {
+        main: '#BB3B62',
+      },
+      secondary: '',
+      error: '',
+      warning: '',
+      info: '',
+      success: '',
+    },
+    typography: {
+      fontWeight: 'bold',
+      position: 'right',
+      fontSize: 20,
+      textAlign: 'right',
+    }
+
+  });
+
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" }} >
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
+      <AppBar position="fixed" open={open} theme={themess} >
+        <Toolbar >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -109,7 +140,7 @@ export default function PersistentDrawerLeft(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" >
             Booking System Dashboard
           </Typography>
         </Toolbar>
@@ -140,21 +171,21 @@ export default function PersistentDrawerLeft(props) {
         <List>
           <SideNaveLink to="/" text=" Home" IconComponent={HomeIcon} />
           <SideNaveLink to="/halls" text="halls" IconComponent={ReceiptIcon} />
-          <SideNaveLink to="/partner" text="Partner" IconComponent={HomeWorkIcon} />
-          <SideNaveLink to="/user" text="User" IconComponent={HomeWorkIcon} />
-          <SideNaveLink to="/ticket" text="Tickets" IconComponent={HomeWorkIcon} />
+          <SideNaveLink to="/partner" text="Partner" IconComponent={HandshakeIcon} />
+          <SideNaveLink to="/user" text="User" IconComponent={PersonIcon} />
+          <SideNaveLink to="/ticket" text="Tickets" IconComponent={BookOnlineIcon} />
 
 
           <SideNaveLink
             to="/employee"
             text="Employee"
-            IconComponent={HomeWorkIcon}
+            IconComponent={AccountBoxIcon}
           />
 
           <SideNaveLink
             to="/company"
             text="Company"
-            IconComponent={HomeWorkIcon}
+            IconComponent={ApartmentIcon}
           />
 
           <ListItem

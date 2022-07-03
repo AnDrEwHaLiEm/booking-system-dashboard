@@ -13,6 +13,52 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Paragraph from "./Paragraph";
 import { Link } from "react-router-dom";
+import { styled } from '@mui/material/styles';
+import { pink } from '@mui/material/colors';
+
+const BootstrapButton = styled(Button)({
+  boxShadow: 'none',
+  textTransform: 'none',
+  fontSize: 16,
+  padding: '6px 12px',
+  border: '1px solid',
+  lineHeight: 1.5,
+  backgroundColor: '#BB3B62',
+  borderColor: '#BB3B62',
+  fontFamily: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(','),
+  '&:hover': {
+    backgroundColor: '#BB3B62',
+    borderColor: '#BB3B62',
+    boxShadow: 'none',
+  },
+  '&:active': {
+    boxShadow: 'none',
+    backgroundColor: '#BB3B62',
+    borderColor: '#BB3B62',
+  },
+  '&:focus': {
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+  },
+});
+
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(pink[700]),
+  backgroundColor: pink[700],
+  '&:hover': {
+    backgroundColor: pink[700],
+  },
+}));
 
 const NewsArticle = ({
   title,
@@ -39,15 +85,15 @@ const NewsArticle = ({
     >
       <Paper elevation={3} sx={{ padding: 2 }}>
         <Stack justifyContent="end" direction="row" spacing={2}>
-          <Button
+          <ColorButton
             onClick={handleDelete}
             color="error"
             variant="outlined"
             startIcon={<DeleteIcon />}
           >
             Delete
-          </Button>
-          <Button
+          </ColorButton>
+          <ColorButton
             component={Link}
             to={"/news/edit/" + _id}
             color="primary"
@@ -55,7 +101,7 @@ const NewsArticle = ({
             endIcon={<EditIcon />}
           >
             Edit
-          </Button>
+          </ColorButton>
         </Stack>
 
         <img width="200" alt="news image" src={image} />
